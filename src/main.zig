@@ -8,7 +8,7 @@ pub fn main() anyerror!void {
     const screenWidth = 800;
     const screenHeight = 450;
 
-    rl.initWindow(screenWidth, screenHeight, "raylib-zig [core] example - basic window");
+    rl.initWindow(screenWidth, screenHeight, "MechArena Pico");
     defer rl.closeWindow(); // Close window and OpenGL context
 
     rl.setTargetFPS(60); // Set our game to run at 60 frames-per-second
@@ -20,15 +20,16 @@ pub fn main() anyerror!void {
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-
+        const mouseX = rl.getMouseX();
+        const mouseY =rl.getMouseY();
         // Draw
         //----------------------------------------------------------------------------------
         rl.beginDrawing();
         defer rl.endDrawing();
 
-        rl.clearBackground(rl.Color.white);
-
-        rl.drawText("Congrats! You created your first window!", 190, 200, 20, rl.Color.light_gray);
+        rl.clearBackground(rl.Color.black);
+        rl.drawCircle(mouseX,mouseY,10.0,rl.Color.red);
+        rl.drawText("Congrats! You created your first window!", 190, 200, 20, rl.Color.white);
         //----------------------------------------------------------------------------------
     }
 }
