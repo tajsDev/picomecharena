@@ -1,7 +1,7 @@
 // raylib-zig (c) Nikolas Wipper 2023
 
 const rl = @import("raylib");
-
+const game = @import("game.zig");
 pub fn main() anyerror!void {
     // Initialization
     //--------------------------------------------------------------------------------------
