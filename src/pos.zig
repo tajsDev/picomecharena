@@ -1,8 +1,8 @@
 pub const Position = struct {
-    x: f32,
-    y: f32,
+    x: i32,
+    y: i32,
 
-    pub fn new(x: f32, y: f32) Position {
+    pub fn new(x: i32, y: i32) Position {
         return Position{ .x = x, .y = y };
     }
 };

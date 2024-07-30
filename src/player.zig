@@ -1,21 +1,22 @@
 const std = @import("std");
 const rl = @import("raylib");
-const Health = @import("health").Health;
-const Position = @import("position").Position;
-const Sprite = @import("sprite").Sprite;
+const Health = @import("health.zig").Health;
+const Position = @import("pos.zig").Position;
+const Sprite = @import("sprite.zig").Sprite;
 
 pub const Player = struct {
     pos:Position,
     health:Health,
     sprite:Sprite,
+
+
+    pub fn new() Player {
+        const playerSprite = Sprite.new();
+
+        return Player{
+         .pos = Position.new(100, 100),
+         .health = Health.new(100),
+         .sprite = playerSprite,
+     };
+    }
 };
-
-fn initPlayer(texturePath: []const u8) Player {
-    var playerSprite = Sprite.new(texturePath);
-
-    return Player{
-        .pos = Position.new(100.0, 100.0),
-        .health = Health.new(100,100),
-        .sprite = playerSprite,
-    };
-}

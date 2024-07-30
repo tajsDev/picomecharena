@@ -5,14 +5,15 @@ pub const Sprite = struct {
     width: i32,
     height: i32,
 
-    pub fn new(texturePath: []const u8) Sprite {
-        Image startImage = rl.LoadImage(texturePath);
-        Texture2D startText = rl.LoadTextureFromImage(startImage);
-        rl.UnloadImage(startImage);
+    pub fn new() Sprite {
+        var startImage = rl.loadImage("images/download.png");
+        rl.imageResize(&startImage,160,160);
+        defer rl.unloadImage(startImage);
+        const startText = rl.loadTextureFromImage(startImage);
         return Sprite{
-            .texture = rl.LoadTexture(startTexture),
-            .width = 32, // Example width
-            .height = 32, // Example height
+            .texture = startText,
+            .width = 16, // Example width
+            .height = 16, // Example height
         };
     }
 };

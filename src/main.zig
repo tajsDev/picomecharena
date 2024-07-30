@@ -1,7 +1,7 @@
 // raylib-zig (c) Nikolas Wipper 2023
 
 const rl = @import("raylib");
-const game = @import("game.zig");
+const Game = @import("game.zig");
 pub fn main() anyerror!void {
     // Initialization
     //--------------------------------------------------------------------------------------
@@ -13,23 +13,21 @@ pub fn main() anyerror!void {
 
     rl.setTargetFPS(60); // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
-
+    const srtGame = Game.init();
     // Main game loop
     while (!rl.windowShouldClose()) { // Detect window close button or ESC key
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
         const mouseX = rl.getMouseX();
         const mouseY =rl.getMouseY();
         // Draw
         //----------------------------------------------------------------------------------
         rl.beginDrawing();
         defer rl.endDrawing();
-
+        try Game.process(srtGame.newPlayer,mouseX,mouseY) ;
         rl.clearBackground(rl.Color.black);
-        rl.drawCircle(mouseX,mouseY,10.0,rl.Color.red);
+        if(srtGame.currentStatus == undefined) {
         rl.drawText("Congrats! You created your first window!", 190, 200, 20, rl.Color.white);
+        }
+        
         //----------------------------------------------------------------------------------
     }
 }
