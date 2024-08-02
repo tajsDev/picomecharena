@@ -15,7 +15,7 @@ pub const Game = struct {
 };
 
 pub fn init() Game {
-    return Game { .currentStatus = undefined,
+    return Game { .currentStatus = GameStatus.notStarted,
                 .newPlayer = Player.new(),
     } ; 
 }

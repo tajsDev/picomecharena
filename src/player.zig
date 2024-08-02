@@ -11,12 +11,11 @@ pub const Player = struct {
 
 
     pub fn new() Player {
-        const playerSprite = Sprite.new();
 
-        return Player{
+       return Player{
          .pos = Position.new(100, 100),
          .health = Health.new(100),
-         .sprite = playerSprite,
+         .sprite = Sprite.new(),
      };
     }
 };

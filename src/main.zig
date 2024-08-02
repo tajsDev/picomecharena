@@ -5,8 +5,8 @@ const Game = @import("game.zig");
 pub fn main() anyerror!void {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const screenWidth = 800;
-    const screenHeight = 450;
+    const screenWidth = 1000;
+    const screenHeight = 500;
 
     rl.initWindow(screenWidth, screenHeight, "MechArena Pico");
     defer rl.closeWindow(); // Close window and OpenGL context
