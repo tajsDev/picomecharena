@@ -4,15 +4,15 @@ pub const speed = 2;
 
 pub fn controlX(x:i32) i32 {
     var newX = x;
-    const isRight = (rl.isKeyDown(rl.KeyboardKey.key_right) || rl.isKeyDown(rl.KeyboardKey.key_d));
+    const isRight = (rl.isKeyDown(rl.KeyboardKey.key_right) or rl.isKeyDown(rl.KeyboardKey.key_d));
     if (isRight) newX+= speed;
-    if (rl.isKeyDown(rl.KeyboardKey.key_left) || rl.isKeyDown(rl.keyboardKey.key_a)) newX-= speed;
+    if (rl.isKeyDown(rl.KeyboardKey.key_left) or rl.isKeyDown(rl.KeyboardKey.key_a)) newX-= speed;
     return newX;
 }
 
 pub fn controlY(y:i32) i32 {
     var newY = y;
-    if (rl.isKeyDown(rl.KEY_UP) || rl.isKeyDown(rl.KEY_W)) newY-=speed;
-    if (rl.isKeyDown(rl.KEY_DOWN) || rl.isKeyDown(rl.KEY_S)) newY+=speed;
+    if (rl.isKeyDown(rl.KeyboardKey.key_up) or rl.isKeyDown(rl.KeyboardKey.key_w)) newY-=speed;
+    if (rl.isKeyDown(rl.KeyboardKey.key_down) or rl.isKeyDown(rl.KeyboardKey.key_s)) newY+=speed;
     return newY;
 }

@@ -1,21 +1,24 @@
 const std = @import("std");
 const rl = @import("raylib");
 const Health = @import("health.zig").Health;
-const Position = @import("pos.zig").Position;
-const Sprite = @import("sprite.zig").Sprite;
-
+const Sprite = @import("sprite.zig");
+const control = @import("controls.zig");
 pub const Player = struct {
-    pos:Position,
-    health:Health,
-    sprite:Sprite,
-
+    health:i32,
+    texture:rl.Texture2D,
+    x:i32,
+    y:i32,
 
     pub fn new() Player {
 
        return Player{
-         .pos = Position.new(100, 100),
-         .health = Health.new(100),
-         .sprite = Sprite.new(),
+         .health = 100,
+         .texture = Sprite.new(),
+         .x = 0,
+         .y = 0,
      };
+    }
+    pub fn process(self: Player) !void {
+       rl.drawTexture(self.texture,self.x,self.y,rl.Color.white);
     }
 };
