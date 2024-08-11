@@ -3,9 +3,11 @@ const Player = @import("player.zig").Player;
 const controls = @import("controls.zig");
 pub const GameStatus = enum {
     notStarted,
-    playing,
     paused,
-    aborted,
+    flight,
+    land,
+    exit,
+    main,
     gameOver,
 };
 
@@ -19,7 +21,11 @@ pub fn init() Game {
     } ; 
 }
 pub fn process() !void {
-
+    //preloading 
 
 }
+pub fn preload() !void {
+
+}
+
 

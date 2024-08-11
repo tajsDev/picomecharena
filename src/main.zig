@@ -17,7 +17,7 @@ pub fn main() anyerror!void {
     const cBack = back.new();
     defer rl.unloadTexture(cPlay.texture);
     defer rl.unloadTexture(cBack.texture);
-    srtGame.currentStatus = Game.GameStatus.playing;
+    srtGame.currentStatus = Game.GameStatus.notStarted;
     
     while (!rl.windowShouldClose()) { // Detect window close button or ESC key
         rl.beginDrawing();
