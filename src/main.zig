@@ -1,5 +1,4 @@
 const rl = @import("raylib");
-const Game = @import("game.zig");
 const Player = @import("player.zig").Player;
 const control = @import("controls.zig");
 const back = @import("background.zig").Background;
@@ -12,22 +11,25 @@ pub fn main() anyerror!void {
     defer rl.closeWindow(); // Close window and OpenGL context
 
     rl.setTargetFPS(60); // Set our game to run at 60 frames-per-second
-    var srtGame = Game.init();
+    //start the game
     var cPlay = Player.new();
     const cBack = back.new();
+    //preload the game by adding all of the textures
     defer rl.unloadTexture(cPlay.texture);
     defer rl.unloadTexture(cBack.texture);
-    srtGame.currentStatus = Game.GameStatus.notStarted;
-    
     while (!rl.windowShouldClose()) { // Detect window close button or ESC key
         rl.beginDrawing();
         defer rl.endDrawing();
         cPlay.x = control.controlX(cPlay.x);
         cPlay.y = control.controlY(cPlay.y);
-        //set background 
+        //drawing heirarchy
+
+        //background
         try cBack.process();
-        //set player
+        //player and other stuff
         try cPlay.process();
+
+        //effects
         rl.clearBackground(rl.Color.black);
     }
 }
