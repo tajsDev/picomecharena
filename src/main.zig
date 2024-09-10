@@ -17,18 +17,23 @@ pub fn main() anyerror!void {
     var cPlay = Player.new();
     const cBack = back.new();
     var cPlayPos = Pos.new();
+    var camX: f32 = 0.0;
+    var camY: f32 = 0.0;
     //preload the game by adding all of the textures
     defer rl.unloadTexture(cPlay.texture);
     defer rl.unloadTexture(cBack.texture);
     while (!rl.windowShouldClose()) { // Detect window close button or ESC key
         rl.beginDrawing();
         defer rl.endDrawing();
-        cPlayPos = control.controlInput(cPlay.x,cPlay.y);
+        rl.beginMode2D(cPlay.cam);
+        defer rl.endMode2D();
+        cPlayPos = control.controlInput(cPlay.x, cPlay.y);
         cPlay.x = cPlayPos.xSpeed;
         cPlay.y = cPlayPos.ySpeed;
-
+        camX = @floatFromInt(cPlay.x);
+        camY = @floatFromInt(cPlay.y);
         //drawing heirarchy
-
+        cPlay.cam.target = .{ .x = camX + 20.0, .y = camY + 20.0 };
         //background
         try cBack.process();
         //player and other stuff
